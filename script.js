@@ -58,7 +58,7 @@ const createarray = function (max,container) {
 }
 
 const mergesorter = document.querySelector('#mergesort')
-const quicksorter = document.querySelector('#quicksort')
+
 
 let list = createarray(20,mergesorter)
 let liste = createarray(80,quicksorter)
