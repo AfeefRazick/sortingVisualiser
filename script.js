@@ -1,9 +1,10 @@
 const merge = function (left,right) {
-  let l = []
-  let i=0
-  let j=0
+  const l = []
+  const i=0
+  const j=0
 
   while (i<left.length && j<right.length) {
+    setTimeout(()=>{
     if (left[i]<right[j]) {
       l.push(left[i])
       i+=1
@@ -12,6 +13,7 @@ const merge = function (left,right) {
       l.push(right[j])
       j+=1
     }
+    },1)
   }
   while (i<left.length) {
     l.push(left[i])
@@ -42,7 +44,7 @@ const mergesort = function (array) {
   return merge(left,right)
 }
 
-const createarray = function (max,container) {
+const createarray = function (max) {
   let test = []
   
   for (i=1;i<max+1;i++) {
@@ -57,11 +59,9 @@ const createarray = function (max,container) {
   return test
 }
 
-const mergesorter = document.querySelector('#mergesort')
+const container = document.querySelector('.container')
 
-
-let list = createarray(20,mergesorter)
-let liste = createarray(80,quicksorter)
+let list = createarray(80)
 console.log(list)
 console.log(mergesort(list))
 
