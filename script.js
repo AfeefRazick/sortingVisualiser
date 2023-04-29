@@ -125,4 +125,4 @@ mergesort(list)
 // everytime mergesrot is called it will pass in an arguement for parameter 'side' either left or right
 // append the value of side to this list and remove once the mergesort level is done
 // traverse the list for highlighting the bar...when left is the value on list do anything, when right is the value add the length
-// of the previous list
+// of the previous recursion depth level list...can get recursion depth level using length of leftrightlist
