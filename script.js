@@ -1,13 +1,32 @@
 const merge = async function (left,right) {
-  let l = []
+  // console.log(lstart)
+  let lstarter = 0
+  let lstarterright = 0
+  console.log(sidearray)
+  sidearray.forEach((sideelement,index)=>{
+    if (sideelement==='right'){
+      lstarter += Math.floor((sizeofarray-1)/(2**(index)))
+      lstarterright+= (sizeofarray-1)/(2**(index))
+    }
+  
+  })
+  lstarterright = Math.floor(lstarterright) + Math.floor((sizeofarray-1)/(2**(sidearray.length)))
+  // if(){
+  // let lstarterright = lstarter + Math.floor((sizeofarray-1)/(2**(sidearray.length)))
+  
+  // }
+  
+  console.log(lstarter)
+  console.log(lstarterright)
+  l = []
   let i=0
   let j=0
 
   while (i<left.length && j<right.length) {
     
-    bars[i].style.backgroundColor = 'green'
-    bars[j].style.backgroundColor = 'green'
-    console.log('sas')
+    bars[lstarter+i].style.backgroundColor = 'green'
+    bars[lstarterright+j].style.backgroundColor = 'green'
+    // console.log('sas')
 
     if (left[i]<right[j]) {
       l.push(left[i])
@@ -21,12 +40,12 @@ const merge = async function (left,right) {
     await new Promise((resolve) =>
     setTimeout(() => {
       resolve();
-    }, 3000)
+    }, 300)
   )
           
     
-    bars[i].style.backgroundColor = 'sienna'
-    bars[j].style.backgroundColor = 'sienna'
+    bars[lstarter+i].style.backgroundColor = 'sienna'
+    bars[lstarterright+j].style.backgroundColor = 'sienna'
 
     if (left[i]<right[j]) {
       i+=1
@@ -40,7 +59,7 @@ const merge = async function (left,right) {
   
 
   while (i<left.length) {
-    bars[i].style.backgroundColor = 'green'
+    bars[lstarter+i].style.backgroundColor = 'green'
     
     l.push(left[i])
     i+=1
@@ -48,29 +67,29 @@ const merge = async function (left,right) {
     await new Promise((resolve) =>
         setTimeout(() => {
           resolve();
-        }, 30)
+        }, 300)
       )
-    console.log('caca')
-    bars[i-1].style.backgroundColor = 'sienna'
+    // console.log('caca')
+    bars[lstarter+i-1].style.backgroundColor = 'sienna'
           
   }
 
   while (j<right.length) {
-    bars[j].style.backgroundColor = 'green'
+    bars[lstarterright+j].style.backgroundColor = 'green'
     l.push(right[j])
     j+=1
     
     await new Promise((resolve) =>
         setTimeout(() => {
           resolve();
-        }, 30)
+        }, 300)
       )
-    console.log('dff')
-    bars[j-1].style.backgroundColor = 'sienna'
+    // console.log('dff')
+    bars[lstarterright+j-1].style.backgroundColor = 'sienna'
   }
 
   
-  if (l.length==sizeofarray) {
+  if (l.length==sizeofarray-1) {
     console.log(l)
   }
   return l
@@ -78,7 +97,12 @@ const merge = async function (left,right) {
 }
 
 
-const mergesort = async function (array) {
+const mergesort = async function (array,side) {
+  sidearray.push(side)
+  // console.log(sidearray)
+  // if (side==='right'){
+  //   lstart+=l.length
+  // }
   let midpoint = Math.floor(array.length/2)
   if (array.length<=1){
     return array
@@ -88,17 +112,28 @@ const mergesort = async function (array) {
   let right_half = array.slice(midpoint)
   // console.log(right_half)
 
-  let left = await mergesort(left_half)
-  let right = await mergesort(right_half)
-
+  let left = await mergesort(left_half,'left')
+  sidearray.pop()
+  
+  
+  let right = await mergesort(right_half,'right')
+  sidearray.pop()
+  // if (side==='right'){
+  //   lstart-=l.length
+  // }
   return await merge(left,right)
 
 }
 
 const createarray = function (max) {
+  const container = document.createElement('div')
+  container.classList.add('container')
+  div1.append(container)
+
   let test = []
   sizeofarray=max
-  for (i=1;i<max+1;i++) {
+  // console.log(sizeofarray)
+  for (i=1;i<(sizeofarray);i+=1) {
     let height = Math.floor(Math.random() * (max-1))+1
     test.push(height)
     let bar = document.createElement('div')
@@ -112,18 +147,34 @@ const createarray = function (max) {
 }
 var sizeofarray= 0
 var sortedlist = []
-const container = document.querySelector('.container')
+var l = []
+var lstart = 0
 
-let list = createarray(80)
+const div1 = document.querySelector('#div1')
+const generate = document.querySelector('#generate')
+const callmergesort = document.querySelector('#mergesort')
+
+var list = createarray(generate.value)
 console.log(list)
-const bars = document.querySelectorAll(".bar")
-mergesort(list)
+var bars = document.querySelectorAll(".bar")
+var sidearray = []
 
+generate.addEventListener('input',()=>{
+  console.log(generate.value)
+  const container = document.querySelector('.container')
+  container.remove()
+  list = createarray(generate.value)
+  console.log(list)
+  bars = document.querySelectorAll(".bar")
+})
+callmergesort.addEventListener('click',()=>{
+  sidearray = []
+  mergesort(list)
+})
 // keep a recursion depth level tracker
-// this will be a list...probably declare in first level of recursion ....if reclevel is 1 const...
-// pass in arguement with def value
-// everytime mergesrot is called it will pass in an arguement for parameter 'side' either left or right
-// append the value of side to this list and remove once the mergesort level is done
+// *this will be a list...probably declare in first level of recursion ....if reclevel is 1 const...
+// *pass in arguement with def value undefined
+// *everytime mergesrot is called it will pass in an arguement for parameter 'side' either left or right
+// *append the value of side to this list and remove once the mergesort level is done
 // traverse the list for highlighting the bar...when left is the value on list do anything, when right is the value add the length
-// of the previous recursion depth level list...can get recursion depth level using length of leftrightlist
-// git push -u origin [branch]
+// of the previous recursion depth level list...can get recursion depth level using length of leftrightlis
