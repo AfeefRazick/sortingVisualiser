@@ -16,8 +16,13 @@ The technologies used are listed below
 - JavaScript (VanillaJS)
 
 ## How to Use
+
 To use this website, you can visite this url [non-existent] or clone the repository via Github.
 
 ## Credits
+
 This project was largely self implemented with little to no reference to other sorting visualisers. This was done as attempt to use my own implementation of a sorting visualiser as a learning excercise.
 
+## License
+
+This project is licensed under the MIT License license. See the MIT-LICENSE file for details.
