@@ -1,23 +1,21 @@
 const merge = async function (left,right) {
-  // console.log(lstart)
+
   let lstarter = 0
   let lstarterright = 0
-  console.log(sidearray)
+  
   sidearray.forEach((sideelement,index)=>{
     if (sideelement==='right'){
       lstarter += Math.floor((sizeofarray-1)/(2**(index)))
-      lstarterright+= (sizeofarray-1)/(2**(index))
     }
-  
   })
-  lstarterright = Math.floor(lstarterright) + Math.floor((sizeofarray-1)/(2**(sidearray.length)))
-  // if(){
-  // let lstarterright = lstarter + Math.floor((sizeofarray-1)/(2**(sidearray.length)))
   
-  // }
-  
-  console.log(lstarter)
-  console.log(lstarterright)
+  if(Math.floor((sizeofarray-1)/(2**(sidearray.length)))===0){
+    lstarterright = lstarter + 1
+  }
+  else{
+    lstarterright = lstarter + Math.floor((sizeofarray-1)/(2**(sidearray.length)))
+  }
+
   l = []
   let i=0
   let j=0
@@ -26,24 +24,20 @@ const merge = async function (left,right) {
     
     bars[lstarter+i].style.backgroundColor = 'green'
     bars[lstarterright+j].style.backgroundColor = 'green'
-    // console.log('sas')
 
     if (left[i]<right[j]) {
       l.push(left[i])
-      
     }
     else {
       l.push(right[j])
-      
     }
     
     await new Promise((resolve) =>
     setTimeout(() => {
       resolve();
-    }, 300)
-  )
+    }, 30)
+    )
           
-    
     bars[lstarter+i].style.backgroundColor = 'sienna'
     bars[lstarterright+j].style.backgroundColor = 'sienna'
 
@@ -51,13 +45,10 @@ const merge = async function (left,right) {
       i+=1
     }
     else {
-      j+=1
-    }
-    
-        
+      j+=1     
+    } 
   }
   
-
   while (i<left.length) {
     bars[lstarter+i].style.backgroundColor = 'green'
     
@@ -67,11 +58,10 @@ const merge = async function (left,right) {
     await new Promise((resolve) =>
         setTimeout(() => {
           resolve();
-        }, 300)
+        }, 30)
       )
-    // console.log('caca')
+
     bars[lstarter+i-1].style.backgroundColor = 'sienna'
-          
   }
 
   while (j<right.length) {
@@ -82,9 +72,9 @@ const merge = async function (left,right) {
     await new Promise((resolve) =>
         setTimeout(() => {
           resolve();
-        }, 300)
+        }, 30)
       )
-    // console.log('dff')
+
     bars[lstarterright+j-1].style.backgroundColor = 'sienna'
   }
 
@@ -92,6 +82,9 @@ const merge = async function (left,right) {
   if (l.length==sizeofarray-1) {
     console.log(l)
   }
+  l.forEach((height,index)=>{
+    bars[lstarter+index].style.height=`${(height/sizeofarray)*100}%`
+  })
   return l
   
 }
