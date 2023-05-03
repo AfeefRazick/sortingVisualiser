@@ -1,9 +1,9 @@
 :root {
   --col1 : rgb(244, 238, 224);
   --col2 : rgb(57, 54, 70);
-  --col3 : rgb(100, 126, 104);
-  --bar : rgb(14, 131, 136);
-  --highlightbar : white;
+  --col3 : rgb(255, 217, 61);
+  --bar : linear-gradient(to top,rgb(14, 131, 136),rgb(244, 238, 224));
+  --highlightbar : linear-gradient(to top,green,green);
 }
 
 * {
@@ -42,7 +42,7 @@ nav {
 }
 
 .inner-nav > * {
-  margin: 0px 20px ;
+  margin: 0 20px ;
 }
 
 .slidecontainer {
@@ -51,7 +51,37 @@ nav {
 }
 
 .slidecontainer > * {
-  margin: 0 10px;
+  margin: 0px 10px;
+}
+
+#generatelabel {
+  padding: 11px ;
+}
+
+#generatelabel:hover {
+  background-color: var(--col3);
+  color: black;
+}
+
+.slider {
+  -webkit-appearance: none;
+  appearance: none;
+  background-color: white;
+  border-radius: 20px;
+  height: 10px;
+}
+
+.slider:hover {
+  opacity: 90%;
+}
+
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none; 
+  appearance: none;
+  width: 15px; 
+  height: 15px; 
+  background: var(--col3); 
+  border-radius: 20px;
 }
 
 .inner-nav button {
@@ -60,6 +90,10 @@ nav {
   padding: 4px 8px;
   border: 1px solid var(--col3);
   border-radius: 40px;
+}
+
+button:hover {
+  opacity: 90%;
 }
 
 #div1 {
@@ -89,5 +123,5 @@ nav {
 }
 
 .bar {
-  background-color: var(--bar);
+  background-image: var(--bar)
 }
