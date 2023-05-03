@@ -1,6 +1,6 @@
 # Sorting Visualiser
 
-Welcome to my Sorting Visualiser, this project was made in the first year of my computer science degree to help me gain an understanding of HTML, CSS and JavaScript while learning about how sorting algorithms work along with their time complexities.
+Welcome to my Sorting Visualiser, this project was made in the first year of my computer science degree to help me gain an understanding of HTML, CSS and JavaScript, while learning about how sorting algorithms work along with their time complexities.
 This is a website that helps visualise how sorting algorithms work.
 
 ## Features
@@ -21,7 +21,7 @@ To use this website, you can visite this url [non-existent] or clone the reposit
 
 ## Credits
 
-This project was largely self implemented with little to no reference to other sorting visualisers. This was done as attempt to use my own implementation of a sorting visualiser as a learning excercise.
+This project was largely self implemented with little to no reference to other sorting visualisers. This was done as an attempt to use my own implementation of a sorting visualiser as a learning excercise.
 
 ## License
 
