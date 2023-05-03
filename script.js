@@ -1,3 +1,12 @@
+const generateNewArray = function () {
+  // console.log(generateArray.value)
+  const container = document.querySelector('.container')
+  container.remove()
+  list = createarray(generateArray.value)
+  // console.log(list)
+  bars = document.querySelectorAll(".bar")
+}
+
 const merge = async function (left,right) {
 
   let lstart = 0
@@ -22,8 +31,8 @@ const merge = async function (left,right) {
 
   while (i<left.length && j<right.length) {
     
-    bars[lstart+i].style.backgroundColor = 'green'
-    bars[lRightStart+j].style.backgroundColor = 'green'
+    bars[lstart+i].style.backgroundColor = 'var(--highlightbar)'
+    bars[lRightStart+j].style.backgroundColor = 'var(--highlightbar)'
 
     if (left[i]<right[j]) {
       l.push(left[i])
@@ -38,8 +47,8 @@ const merge = async function (left,right) {
     }, 30)
     )
           
-    bars[lstart+i].style.backgroundColor = 'sienna'
-    bars[lRightStart+j].style.backgroundColor = 'sienna'
+    bars[lstart+i].style.backgroundColor = 'var(--bar)'
+    bars[lRightStart+j].style.backgroundColor = 'var(--bar)'
 
     if (left[i]<right[j]) {
       i+=1
@@ -50,7 +59,7 @@ const merge = async function (left,right) {
   }
   
   while (i<left.length) {
-    bars[lstart+i].style.backgroundColor = 'green'
+    bars[lstart+i].style.backgroundColor = 'var(--highlightbar)'
     
     l.push(left[i])
     i+=1
@@ -61,11 +70,11 @@ const merge = async function (left,right) {
         }, 30)
       )
 
-    bars[lstart+i-1].style.backgroundColor = 'sienna'
+    bars[lstart+i-1].style.backgroundColor = 'var(--bar)'
   }
 
   while (j<right.length) {
-    bars[lRightStart+j].style.backgroundColor = 'green'
+    bars[lRightStart+j].style.backgroundColor = 'var(--highlightbar)'
     l.push(right[j])
     j+=1
     
@@ -75,7 +84,7 @@ const merge = async function (left,right) {
         }, 30)
       )
 
-    bars[lRightStart+j-1].style.backgroundColor = 'sienna'
+    bars[lRightStart+j-1].style.backgroundColor = 'var(--bar)'
   }
 
   // if (l.length==sizeofarray-1) {
@@ -138,19 +147,22 @@ var l = []
 const div1 = document.querySelector('#div1')
 const generateArray = document.querySelector('#generate')
 const callmergesort = document.querySelector('#mergesort')
+const generateLabel = document.querySelector('#generatelabel')
+
 
 var list = createarray(generateArray.value)
 // console.log(list)
 var bars = document.querySelectorAll(".bar")
 var sidearray = []
 
+
+
 generateArray.addEventListener('input',()=>{
-  // console.log(generateArray.value)
-  const container = document.querySelector('.container')
-  container.remove()
-  list = createarray(generateArray.value)
-  // console.log(list)
-  bars = document.querySelectorAll(".bar")
+  generateNewArray()
+})
+
+generateLabel.addEventListener('click',()=>{
+  generateNewArray()
 })
 
 callmergesort.addEventListener('click',()=>{
