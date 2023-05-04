@@ -3,20 +3,16 @@ const bubblesort = async function (array) {
   for (let i=0;i<len;i++) {
     for (let j=0;j<len-i;j++) {
       if (array[j+1]<array[j]) {
-        bars[j].style.backgroundImage='var(--swapbar)'
-        bars[j+1].style.backgroundImage='var(--highlightbar)'
+        setBarBgImgColor(j,'var(--swapbar)')
+        setBarBgImgColor(j+1,'var(--highlightbar)')
 
-        await new Promise((resolve) =>
-        setTimeout(() => {
-          resolve();
-        }, 50)
-        )
+        await delay(30)
 
         swap(array,j,j+1)
         swapheight(j,j+1)
 
-        bars[j].style.backgroundImage='var(--bar)'
-        bars[j+1].style.backgroundImage='var(--bar)'
+        setBarBgImgColor(j,'var(--bar)')
+        setBarBgImgColor(j+1,'var(--bar)')
 
       }
     }

@@ -5,49 +5,38 @@ const partition = async function (array,low,high) {
   i=low-1
 
   for (j=low;j<high;j++) {
-    bars[j].style.backgroundImage='var(--highlightbar)'
+    setBarBgImgColor(j,'var(--highlightbar)')
     // delay when going through list and comparing pivot with [j]--color green
-    await new Promise((resolve) =>
-        setTimeout(() => {
-          resolve();
-        }, 50)
-      )
-    bars[j].style.backgroundImage='var(--bar)'
+    await delay(30)
+
+    setBarBgImgColor(j)
     if (array[j]<=pivot) {
       i+=1
 
       if (i!=j) { // if the value is a smaller element but the swap is the same element i==j then dont delay and dont turn red
-      bars[j].style.backgroundImage='var(--swapbar)'
-      bars[i].style.backgroundImage='var(--swapbar)'
+      setBarBgImgColor(j,'var(--swapbar)')
+      setBarBgImgColor(i,'var(--swapbar)')
 
       // delay when swapping smaller than pivot value [j] with greater value index [i]
-      await new Promise((resolve) =>
-        setTimeout(() => {
-          resolve();
-        }, 100)
-      )
+      await delay(100)
       }
       swap(array,i,j)
       swapheight(i,j)
       
-      bars[j].style.backgroundImage='var(--bar)'
-      bars[i].style.backgroundImage='var(--bar)'
+      setBarBgImgColor(j)
+      setBarBgImgColor(i)
     }
   }
-  bars[high].style.backgroundImage='var(--swapbar)'
-  bars[i+1].style.backgroundImage='var(--swapbar)'
+  setBarBgImgColor(high,'var(--swapbar)')
+  setBarBgImgColor(i+1,'var(--swapbar)')
   // delay for switching pivot with [i+1] --putting pivot in correct place--color red
-  await new Promise((resolve) =>
-        setTimeout(() => {
-          resolve();
-        }, 200)
-      )
+  await delay(200)
 
   swap(array,i+1,high)
   swapheight(i+1,high)    
 
-  bars[i+1].style.backgroundImage='var(--bar)'
-  bars[high].style.backgroundImage='var(--bar)'
+  setBarBgImgColor(high)
+  setBarBgImgColor(i+1)
   return i+1
 }
 

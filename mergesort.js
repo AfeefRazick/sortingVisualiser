@@ -35,11 +35,7 @@ const merge = async function (left,right) {
       l.push(right[j])
     }
     
-    await new Promise((resolve) =>
-    setTimeout(() => {
-      resolve();
-    }, 30)
-    )
+    await delay(30)
           
     bars[lstart+i].style.backgroundImage = 'var(--bar)'
     bars[lRightStart+j].style.backgroundImage = 'var(--bar)'
@@ -58,11 +54,7 @@ const merge = async function (left,right) {
     l.push(left[i])
     i+=1
     
-    await new Promise((resolve) =>
-        setTimeout(() => {
-          resolve();
-        }, 30)
-      )
+    await delay(30)
 
     bars[lstart+i-1].style.backgroundImage = 'var(--bar)'
   }
@@ -72,11 +64,7 @@ const merge = async function (left,right) {
     l.push(right[j])
     j+=1
     
-    await new Promise((resolve) =>
-        setTimeout(() => {
-          resolve();
-        }, 30)
-      )
+    await delay(30)
 
     bars[lRightStart+j-1].style.backgroundImage = 'var(--bar)'
   }

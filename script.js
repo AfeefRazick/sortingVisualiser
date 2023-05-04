@@ -1,3 +1,15 @@
+const setBarBgImgColor = function (index,img='var(--bar)') {
+  bars[index].style.backgroundImage = img
+}
+
+const delay = async function (ms) {
+  await new Promise((resolve) =>
+        setTimeout(() => {
+          resolve();
+        }, ms)
+  )
+}
+
 const swap = function (array,lefti,rightj) {
   let temp = array[lefti]
   array[lefti]=array[rightj]
