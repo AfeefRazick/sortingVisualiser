@@ -49,7 +49,6 @@ const quicksort = async function (array,low,high) {
   await quicksort(array,low,partIndex-1)
 
   await quicksort(array,partIndex+1,high)
-  console.log(list)
 }
 
 

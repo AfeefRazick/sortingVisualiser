@@ -87,7 +87,7 @@ callquicksort.addEventListener('click',()=>{
 })
 
 callselectionsort.addEventListener('click',()=>{
-  selectionsort(list,0,list.length-1)
+  selectionsort(list)
 })
 
 callbubblesort.addEventListener('click',()=>{
