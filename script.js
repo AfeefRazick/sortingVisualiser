@@ -12,12 +12,12 @@ const createarray = function (max) {
   container.classList.add('container')
   div1.append(container)
 
-  let test = []
+  let unsortedList = []
   sizeofarray=max
 
   for (i=1;i<(sizeofarray);i+=1) {
     let height = Math.floor(Math.random() * (max-1))+1
-    test.push(height)
+    unsortedList.push(height)
     let bar = document.createElement('div')
     bar.classList.add('bar')
     bar.setAttribute('id',`bar${i}`)
@@ -26,7 +26,7 @@ const createarray = function (max) {
     container.append(bar)
   } 
 
-  return test
+  return unsortedList
 }
 var sizeofarray= 0
 var sortedlist = []
@@ -34,10 +34,10 @@ var l = []
 
 
 const div1 = document.querySelector('#div1')
+const generateLabel = document.querySelector('#generatelabel')
 const generateArray = document.querySelector('#generate')
 const callmergesort = document.querySelector('#mergesort')
-const generateLabel = document.querySelector('#generatelabel')
-
+const callquicksort = document.querySelector('#quicksort')
 
 var list = createarray(generateArray.value)
 // console.log(list)
@@ -55,4 +55,10 @@ generateLabel.addEventListener('click',()=>{
 callmergesort.addEventListener('click',()=>{
   sidearray = []
   mergesort(list)
+})
+
+callquicksort.addEventListener('click',()=>{
+  console.log(list)
+  quicksort(list,0,list.length-1)
+  console.log(list)
 })

@@ -3,7 +3,7 @@
   --col2 : rgb(57, 54, 70);
   --col3 : rgb(255, 217, 61);
   --bar : linear-gradient(to top,rgb(14, 131, 136),rgb(244, 238, 224));
-  --highlightbar : linear-gradient(to top,green,green);
+  --highlightbar : linear-gradient(to top,rgb(22, 255, 0),rgb(22, 255, 0));
 }
 
 * {
