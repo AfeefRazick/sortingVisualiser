@@ -4,22 +4,62 @@ const swap = function (array,lefti,rightj) {
   array[rightj]=temp
 }
 
-const partition = async function (array,low,high) {
+const swapheight = function (lefti,rightj) {
+  let temp = bars[lefti].style.height
+  bars[lefti].style.height=bars[rightj].style.height
+  bars[rightj].style.height=temp
+}
 
+const partition = async function (array,low,high) {
+  bars[high].style.backgroundImage='var(--pivbar)'
   pivot = array[high]
 
   i=low-1
 
   for (j=low;j<high;j++) {
+    bars[j].style.backgroundImage='var(--highlightbar)'
+    // delay when going through list and comparing pivot with [j]--color green
+    await new Promise((resolve) =>
+        setTimeout(() => {
+          resolve();
+        }, 50)
+      )
+    bars[j].style.backgroundImage='var(--bar)'
     if (array[j]<=pivot) {
       i+=1
-      
+
+      if (i!=j) { // if the value is a smaller element but the swap is the same element i==j then dont delay and dont turn red
+      bars[j].style.backgroundImage='var(--swapbar)'
+      bars[i].style.backgroundImage='var(--swapbar)'
+
+      // delay when swapping smaller than pivot value [j] with greater value index [i]
+      await new Promise((resolve) =>
+        setTimeout(() => {
+          resolve();
+        }, 100)
+      )
+      }
       swap(array,i,j)
+      swapheight(i,j)
+      
+      bars[j].style.backgroundImage='var(--bar)'
+      bars[i].style.backgroundImage='var(--bar)'
     }
   }
-  
-  swap(array,i+1,high)
+  bars[high].style.backgroundImage='var(--swapbar)'
+  bars[i+1].style.backgroundImage='var(--swapbar)'
+  // delay for switching pivot with [i+1] --putting pivot in correct place--color red
+  await new Promise((resolve) =>
+        setTimeout(() => {
+          resolve();
+        }, 200)
+      )
 
+  swap(array,i+1,high)
+  swapheight(i+1,high)    
+
+  bars[i+1].style.backgroundImage='var(--bar)'
+  bars[high].style.backgroundImage='var(--bar)'
   return i+1
 }
 
@@ -34,11 +74,6 @@ const quicksort = async function (array,low,high) {
   await quicksort(array,partIndex+1,high)
   console.log(list)
 }
-// var arr=[34,5,6,345,64,3,4,76]
-// console.log(arr)
-// let lent = arr.length
-// quicksort(arr,0,lent-1)
-// console.log(arr)
 
 
 // best case nlogn

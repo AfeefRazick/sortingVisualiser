@@ -40,7 +40,6 @@ const callmergesort = document.querySelector('#mergesort')
 const callquicksort = document.querySelector('#quicksort')
 
 var list = createarray(generateArray.value)
-// console.log(list)
 var bars = document.querySelectorAll(".bar")
 var sidearray = []
 
@@ -58,7 +57,5 @@ callmergesort.addEventListener('click',()=>{
 })
 
 callquicksort.addEventListener('click',()=>{
-  console.log(list)
   quicksort(list,0,list.length-1)
-  console.log(list)
 })

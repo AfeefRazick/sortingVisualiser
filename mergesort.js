@@ -1,3 +1,6 @@
+// mergesort implementation is not ideal...was the first sort visualisation i implemented so uses inefficient code 
+// to improve copy quicksort method
+
 const merge = async function (left,right) {
 
   let lstart = 0
