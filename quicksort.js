@@ -1,15 +1,3 @@
-const swap = function (array,lefti,rightj) {
-  let temp = array[lefti]
-  array[lefti]=array[rightj]
-  array[rightj]=temp
-}
-
-const swapheight = function (lefti,rightj) {
-  let temp = bars[lefti].style.height
-  bars[lefti].style.height=bars[rightj].style.height
-  bars[rightj].style.height=temp
-}
-
 const partition = async function (array,low,high) {
   bars[high].style.backgroundImage='var(--pivbar)'
   pivot = array[high]
@@ -82,3 +70,7 @@ const quicksort = async function (array,low,high) {
 // this means for an already sorted array this is the worst possible pivot
 // a better method of choosing pivot can be random choice
 // or median method
+
+// red means swap
+// yellow is pivot
+// green means comparing or less than

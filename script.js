@@ -1,3 +1,15 @@
+const swap = function (array,lefti,rightj) {
+  let temp = array[lefti]
+  array[lefti]=array[rightj]
+  array[rightj]=temp
+}
+
+const swapheight = function (lefti,rightj) {
+  let temp = bars[lefti].style.height
+  bars[lefti].style.height=bars[rightj].style.height
+  bars[rightj].style.height=temp
+}
+
 const generateNewArray = function () {
   // console.log(generateArray.value)
   const container = document.querySelector('.container')
@@ -38,6 +50,8 @@ const generateLabel = document.querySelector('#generatelabel')
 const generateArray = document.querySelector('#generate')
 const callmergesort = document.querySelector('#mergesort')
 const callquicksort = document.querySelector('#quicksort')
+const callbubblesort = document.querySelector('#bubblesort')
+const callselectionsort = document.querySelector('#selectionsort')
 
 var list = createarray(generateArray.value)
 var bars = document.querySelectorAll(".bar")
@@ -59,3 +73,14 @@ callmergesort.addEventListener('click',()=>{
 callquicksort.addEventListener('click',()=>{
   quicksort(list,0,list.length-1)
 })
+
+callselectionsort.addEventListener('click',()=>{
+  selectionsort(list,0,list.length-1)
+})
+
+callbubblesort.addEventListener('click',()=>{
+  bubblesort(list)
+})
+
+// purple or some color when a bar is in its correct position ...put inside swap height function...first have to change mergesort.js
+// take in array ...if bar[index].height=== array[index]*sometin
