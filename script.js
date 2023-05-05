@@ -1,3 +1,15 @@
+const highlightbutton = function () {
+  buttons.forEach((button)=>{
+    button.classList.add('unfinished')
+  })
+}
+
+const remhighlightbutton = function () {
+  buttons.forEach((button)=>{
+    button.classList.remove('unfinished')
+  })
+}
+
 const setBarBgImgColor = function (index,img='var(--bar)') {
   bars[index].style.backgroundImage = img
 }
@@ -56,6 +68,7 @@ const div1 = document.querySelector('#div1')
 const generateLabel = document.querySelector('#generatelabel')
 const generateArray = document.querySelector('#generate')
 const speed = document.querySelector('#speed')
+const buttons = document.querySelectorAll('.button')
 const callmergesort = document.querySelector('#mergesort')
 const callquicksort = document.querySelector('#quicksort')
 const callbubblesort = document.querySelector('#bubblesort')
@@ -67,50 +80,79 @@ const selectiondesc = document.querySelector('#selectiondesc')
 
 var list = createarray(generateArray.value)
 var bars = document.querySelectorAll(".bar")
-var ms = generateArray.max-speed.value+10
+var ms = (generateArray.max*2)-speed.value
+var finished = true
 
 generateArray.addEventListener('input',()=>{
-  generateNewArray()
+  if (finished){
+    generateNewArray()
+  }
 })
 
 generateLabel.addEventListener('click',()=>{
-  generateNewArray()
+  if (finished){
+    generateNewArray()
+  }
 })
 
 speed.addEventListener('input',()=>{
-  ms = generateArray.max-speed.value+10
-  console.log(ms)
+  ms = (generateArray.max*2)-speed.value
 })
 
-callmergesort.addEventListener('click',()=>{
-  mergesort(list,0,list.length-1)
-  mergedesc.style.display = 'flex'
-  quickdesc.style.display = 'none'
-  bubbledesc.style.display = 'none'
-  selectiondesc.style.display = 'none'
-
+callmergesort.addEventListener('click',async ()=>{
+  if (finished) {
+    mergedesc.style.display = 'flex'
+    quickdesc.style.display = 'none'
+    bubbledesc.style.display = 'none'
+    selectiondesc.style.display = 'none'
+    finished = false
+    highlightbutton()
+    await mergesort(list,0,list.length-1)
+    remhighlightbutton()
+    finished = true
+  }
 })
 
-callquicksort.addEventListener('click',()=>{
-  quicksort(list,0,list.length-1)
-  quickdesc.style.display = 'flex'
-  mergedesc.style.display = 'none'
-  bubbledesc.style.display = 'none'
-  selectiondesc.style.display = 'none'
+callquicksort.addEventListener('click',async ()=>{
+  if (finished) {
+    quickdesc.style.display = 'flex'
+    mergedesc.style.display = 'none'
+    bubbledesc.style.display = 'none'
+    selectiondesc.style.display = 'none'
+    finished = false
+    highlightbutton()
+    await quicksort(list,0,list.length-1)
+    remhighlightbutton()
+    finished = true
+  }
 })
 
-callbubblesort.addEventListener('click',()=>{
-  bubblesort(list)
-  bubbledesc.style.display = 'flex'
-  quickdesc.style.display = 'none'
-  mergedesc.style.display = 'none'
-  selectiondesc.style.display = 'none'
+callbubblesort.addEventListener('click',async ()=>{
+  if (finished) {
+    bubbledesc.style.display = 'flex'
+    quickdesc.style.display = 'none'
+    mergedesc.style.display = 'none'
+    selectiondesc.style.display = 'none'
+    finished = false
+    highlightbutton()
+    await bubblesort(list)
+    remhighlightbutton()
+    finished = true
+  }
+  
 })
 
-callselectionsort.addEventListener('click',()=>{
-  selectionsort(list)
-  selectiondesc.style.display = 'flex'
-  quickdesc.style.display = 'none'
-  mergedesc.style.display = 'none'
-  bubbledesc.style.display = 'none'
+callselectionsort.addEventListener('click',async ()=>{
+  if (finished) {
+    selectiondesc.style.display = 'flex'
+    quickdesc.style.display = 'none'
+    mergedesc.style.display = 'none'
+    bubbledesc.style.display = 'none'
+    finished = false
+    highlightbutton()
+    await selectionsort(list)
+    remhighlightbutton()
+    finished = true
+  }
+
 })
