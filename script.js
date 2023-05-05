@@ -50,9 +50,8 @@ const createarray = function (max) {
 
   return unsortedList
 }
-var sizeofarray= 0
-var sortedlist = []
-var l = []
+// var sizeofarray= 0
+// var sortedlist = []
 
 
 const div1 = document.querySelector('#div1')
@@ -66,7 +65,6 @@ const callselectionsort = document.querySelector('#selectionsort')
 
 var list = createarray(generateArray.value)
 var bars = document.querySelectorAll(".bar")
-var sidearray = []
 var ms = generateArray.max-speed.value
 
 generateArray.addEventListener('input',()=>{
@@ -79,7 +77,6 @@ generateLabel.addEventListener('click',()=>{
 
 speed.addEventListener('input',()=>{
   ms = generateArray.max-speed.value
-  // console.log(ms)
 })
 
 callmergesort.addEventListener('click',()=>{

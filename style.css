@@ -40,20 +40,16 @@ nav {
 .inner-nav {
   display: flex;
   align-items: center;
-  width: 90%;
 }
 
 .inner-nav > * {
-  margin: 0 20px ;
+  margin: 0 15px ;
 }
 
 .slidecontainer {
+  justify-self: flex-start;
   display: flex;
   align-items: center;
-}
-
-.slidecontainer > * {
-  margin: 0px 10px;
 }
 
 .sliderlabel {
@@ -86,7 +82,8 @@ nav {
   border-radius: 20px;
 }
 
-.inner-nav button {
+button {
+  justify-self: end;
   color: black;
   background-color: var(--col3);
   padding: 4px 8px;

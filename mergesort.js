@@ -57,7 +57,6 @@ const merge = async function (array, l, m, r) {
         array[k] = R[j];
         j++;
         
-
         await asyncdelay(ms)
 
         setBarBgImgColor(m+j-1,'var(--bar)')
@@ -75,5 +74,5 @@ const mergesort = async function (array,l, r){
     await mergesort(array,l,m);
     await mergesort(array,m+1,r);
     await merge(array,l,m,r);
-    console.log(array)
+    
 }
