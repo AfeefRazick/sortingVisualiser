@@ -26,7 +26,7 @@ const generateNewArray = function () {
   const container = document.querySelector('.container')
   container.remove()
   list = createarray(generateArray.value)
-  console.log(list)
+  // console.log(list)
   bars = document.querySelectorAll(".bar")
 }
 
@@ -67,7 +67,7 @@ const selectiondesc = document.querySelector('#selectiondesc')
 
 var list = createarray(generateArray.value)
 var bars = document.querySelectorAll(".bar")
-var ms = generateArray.max-speed.value
+var ms = generateArray.max-speed.value+10
 
 generateArray.addEventListener('input',()=>{
   generateNewArray()
@@ -78,7 +78,8 @@ generateLabel.addEventListener('click',()=>{
 })
 
 speed.addEventListener('input',()=>{
-  ms = generateArray.max-speed.value
+  ms = generateArray.max-speed.value+10
+  console.log(ms)
 })
 
 callmergesort.addEventListener('click',()=>{

@@ -9,7 +9,7 @@ const bubblesort = async function (array) {
         setBarBgImgColor(j,'var(--swapbar)')
         setBarBgImgColor(j+1,'var(--swapbar)')
 
-        await asyncdelay(ms*3)
+        await asyncdelay(ms)
 
         swap(array,j,j+1)
         swapheight(j,j+1)
