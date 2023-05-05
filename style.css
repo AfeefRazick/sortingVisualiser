@@ -137,6 +137,7 @@ button:hover {
   list-style-position: inside;
   border: 10px solid var(--col4);
   border-radius: 15px;
+  bottom: 60px;
 }
 
 .description {
@@ -154,10 +155,16 @@ button:hover {
 a {
   font-size: 20px;
   margin: 0px 0px 0px 3px;
-  /* text-decoration: underline; */
+  color: rgb(197, 0, 197);
 }
 
-.headings {
+.heading1 {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 35px;
+}
+
+.heading2 {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   font-size: 25px;
 }
 
