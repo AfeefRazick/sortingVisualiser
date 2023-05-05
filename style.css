@@ -1,7 +1,10 @@
 :root {
-  --col1 : rgb(244, 238, 224);
+  /* --col1 : rgb(244, 238, 224); */
+  /* --col1 : #251B37; */
+  --col1 : #3C2C3E;
   --col2 : rgb(57, 54, 70);
   --col3 : rgb(255, 217, 61);
+  --col4 : inherit;
   --bar : linear-gradient(to top,rgb(14, 131, 136),rgb(244, 238, 224));
   --highlightbar : linear-gradient(to top,rgb(22, 255, 0),rgb(22, 255, 0));
   --swapbar : linear-gradient(to top,red,red);
@@ -13,7 +16,7 @@
   font-size: 16px;
   margin: 0;
   padding: 0;
-  color: white;
+  color: black;
   text-decoration: none;
 }
 
@@ -21,7 +24,7 @@
   width: 100%;
   height: 660px;
   display: flex;
-  justify-content: center;
+  justify-content: space-evenly;
   align-items: center;
 }
 
@@ -53,6 +56,7 @@ nav {
 }
 
 .sliderlabel {
+  color: white;
   padding: 11px ;
 }
 
@@ -111,7 +115,6 @@ button:hover {
   justify-content: space-around;
   align-items: end;
   position: relative;
-  left: -100px;
   width: 70%;
   height: 60%;
   background-color: var(--col2);
@@ -123,4 +126,51 @@ button:hover {
 
 .bar {
   background-image: var(--bar)
+}
+
+.desc-container {
+  position: relative;
+  width: 20%;
+  height: 60%;
+  display: flex;
+  background-color: var(--col4);
+  list-style-type: circle;
+  list-style-position: inside;
+  border: 10px solid var(--col4);
+  border-radius: 15px;
+}
+
+.description {
+  display: none;
+  flex-direction: column;
+}
+
+.desc-container ul li {
+  font-size: 35px;
+}
+
+.desc-container ul li .text{
+  color: white;
+  margin: 10px;
+  font-size: 20px;
+}
+
+
+.compare {
+  list-style-image: var(--highlightbar);
+}
+
+.swap {
+  list-style-image: var(--swapbar);
+}
+
+.pivot {
+  list-style-image: var(--pivbar);
+}
+
+
+#mergedesc {
+  /* display: flex; */
+  
+  /* justify-content: start; */
 }

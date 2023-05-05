@@ -26,19 +26,20 @@ const generateNewArray = function () {
   const container = document.querySelector('.container')
   container.remove()
   list = createarray(generateArray.value)
+  console.log(list)
   bars = document.querySelectorAll(".bar")
 }
 
 const createarray = function (max) {
   const container = document.createElement('div')
   container.classList.add('container')
-  div1.append(container)
+  div1.prepend(container)
 
   let unsortedList = []
   sizeofarray=max
 
-  for (i=1;i<(sizeofarray);i+=1) {
-    let height = Math.floor(Math.random() * (max-1))+1
+  for (i=0;i<sizeofarray;i+=1) {
+    let height = Math.floor(Math.random() * (max))+1
     unsortedList.push(height)
     let bar = document.createElement('div')
     bar.classList.add('bar')
@@ -50,9 +51,6 @@ const createarray = function (max) {
 
   return unsortedList
 }
-// var sizeofarray= 0
-// var sortedlist = []
-
 
 const div1 = document.querySelector('#div1')
 const generateLabel = document.querySelector('#generatelabel')
@@ -62,6 +60,10 @@ const callmergesort = document.querySelector('#mergesort')
 const callquicksort = document.querySelector('#quicksort')
 const callbubblesort = document.querySelector('#bubblesort')
 const callselectionsort = document.querySelector('#selectionsort')
+const mergedesc = document.querySelector('#mergedesc')
+const quickdesc = document.querySelector('#quickdesc')
+const bubbledesc = document.querySelector('#bubbledesc')
+const selectiondesc = document.querySelector('#selectiondesc')
 
 var list = createarray(generateArray.value)
 var bars = document.querySelectorAll(".bar")
@@ -80,21 +82,34 @@ speed.addEventListener('input',()=>{
 })
 
 callmergesort.addEventListener('click',()=>{
-  sidearray = []
   mergesort(list,0,list.length-1)
+  mergedesc.style.display = 'flex'
+  quickdesc.style.display = 'none'
+  bubbledesc.style.display = 'none'
+  selectiondesc.style.display = 'none'
+
 })
 
 callquicksort.addEventListener('click',()=>{
   quicksort(list,0,list.length-1)
-})
-
-callselectionsort.addEventListener('click',()=>{
-  selectionsort(list)
+  quickdesc.style.display = 'flex'
+  mergedesc.style.display = 'none'
+  bubbledesc.style.display = 'none'
+  selectiondesc.style.display = 'none'
 })
 
 callbubblesort.addEventListener('click',()=>{
   bubblesort(list)
+  bubbledesc.style.display = 'flex'
+  quickdesc.style.display = 'none'
+  mergedesc.style.display = 'none'
+  selectiondesc.style.display = 'none'
 })
 
-// purple or some color when a bar is in its correct position ...put inside swap height function...first have to change mergesort.js
-// take in array ...if bar[index].height=== array[index]*sometin
+callselectionsort.addEventListener('click',()=>{
+  selectionsort(list)
+  selectiondesc.style.display = 'flex'
+  quickdesc.style.display = 'none'
+  mergedesc.style.display = 'none'
+  bubbledesc.style.display = 'none'
+})
