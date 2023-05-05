@@ -56,11 +56,11 @@ nav {
   margin: 0px 10px;
 }
 
-#generatelabel {
+.sliderlabel {
   padding: 11px ;
 }
 
-#generatelabel:hover {
+.sliderlabel:hover {
   background-color: var(--col3);
   color: black;
 }

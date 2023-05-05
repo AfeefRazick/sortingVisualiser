@@ -1,101 +1,79 @@
 // mergesort implementation is not ideal...was the first sort visualisation i implemented so uses inefficient code 
 // to improve copy quicksort method
 
-const merge = async function (left,right) {
+const merge = async function (array, l, m, r) {
+    var n1 = m - l + 1;
+    var n2 = r - m;
+ 
+    var L = []
+    var R = []
+ 
+    for (var i = 0; i < n1; i++)
+        L[i] = array[l + i];
+    for (var j = 0; j < n2; j++)
+        R[j] = array[m + 1 + j];
+ 
+    var i = 0;
+    var j = 0;
+    var k = l;
+ 
+    while (i < n1 && j < n2) {
+        setBarBgImgColor(l+i,'var(--highlightbar)')
+        setBarBgImgColor(m+j,'var(--highlightbar)')
 
-  let lstart = 0
-  let lRightStart = 0
-  
-  sidearray.forEach((sideelement,index)=>{
-    if (sideelement==='right'){
-      lstart += Math.floor((sizeofarray-1)/(2**(index)))
+        await asyncdelay(ms)
+
+        setBarBgImgColor(l+i,'var(--bar)')
+        setBarBgImgColor(m+j,'var(--bar)')
+        if (L[i] <= R[j]) {
+            array[k] = L[i];
+            
+            i++;
+        }
+        else {
+            array[k] = R[j];
+            j++;
+        }
+
+        bars[k].style.height = `${(array[k]/sizeofarray)*100}%`
+        k++;
     }
-  })
-  
-  if(Math.floor((sizeofarray-1)/(2**(sidearray.length)))===0){
-    lRightStart = lstart + 1
-  }
-  else{
-    lRightStart = lstart + Math.floor((sizeofarray-1)/(2**(sidearray.length)))
-  }
+ 
+    while (i < n1) {
+        setBarBgImgColor(l+i,'var(--highlightbar)')
+        array[k] = L[i];
+        i++;
 
-  l = []
-  let i=0
-  let j=0
+        await asyncdelay(ms)
 
-  while (i<left.length && j<right.length) {
-    
-    bars[lstart+i].style.backgroundImage = 'var(--highlightbar)'
-    bars[lRightStart+j].style.backgroundImage = 'var(--highlightbar)'
+        setBarBgImgColor(l+i-1,'var(--bar)')
 
-    if (left[i]<right[j]) {
-      l.push(left[i])
+        bars[k].style.height = `${(array[k]/sizeofarray)*100}%`
+        k++;
     }
-    else {
-      l.push(right[j])
+ 
+    while (j < n2) {
+        setBarBgImgColor(m+j,'var(--highlightbar)')
+        array[k] = R[j];
+        j++;
+        
+
+        await asyncdelay(ms)
+
+        setBarBgImgColor(m+j-1,'var(--bar)')
+
+        bars[k].style.height = `${(array[k]/sizeofarray)*100}%`
+        k++;
     }
-    
-    await delay(30)
-          
-    bars[lstart+i].style.backgroundImage = 'var(--bar)'
-    bars[lRightStart+j].style.backgroundImage = 'var(--bar)'
-
-    if (left[i]<right[j]) {
-      i+=1
-    }
-    else {
-      j+=1     
-    } 
-  }
-  
-  while (i<left.length) {
-    bars[lstart+i].style.backgroundImage = 'var(--highlightbar)'
-    
-    l.push(left[i])
-    i+=1
-    
-    await delay(30)
-
-    bars[lstart+i-1].style.backgroundImage = 'var(--bar)'
-  }
-
-  while (j<right.length) {
-    bars[lRightStart+j].style.backgroundImage = 'var(--highlightbar)'
-    l.push(right[j])
-    j+=1
-    
-    await delay(30)
-
-    bars[lRightStart+j-1].style.backgroundImage = 'var(--bar)'
-  }
-
-  // if (l.length==sizeofarray-1) {
-  //   console.log(l)
-  // }
-
-  l.forEach((height,index)=>{
-    bars[lstart+index].style.height=`${(height/sizeofarray)*100}%`
-  })
-
-  return l
 }
-
-
-const mergesort = async function (array,side) {
-  sidearray.push(side)
-  
-  let midpoint = Math.floor(array.length/2)
-  if (array.length<=1){
-    return array
-  }
-  let left_half = array.slice(0,midpoint)
-  let right_half = array.slice(midpoint)
-
-  let left = await mergesort(left_half,'left')
-  sidearray.pop()
-  
-  let right = await mergesort(right_half,'right')
-  sidearray.pop()
-  
-  return await merge(left,right)
+ 
+const mergesort = async function (array,l, r){
+    if(l>=r){
+        return;
+    }
+    var m =l+ Math.floor((r-l)/2);
+    await mergesort(array,l,m);
+    await mergesort(array,m+1,r);
+    await merge(array,l,m,r);
+    console.log(array)
 }

@@ -10,7 +10,7 @@ const selectionsort = async function (array) {
 
       setBarBgImgColor(j,'var(--highlightbar)')//set current camparison value [j] to green
 
-      await delay(30)
+      await asyncdelay(ms)
       setBarBgImgColor(j)
       if (array[j]<array[min]) {
         setBarBgImgColor(min)
@@ -24,7 +24,7 @@ const selectionsort = async function (array) {
     setBarBgImgColor(min,'var(--swapbar)')//when swap color is red
     setBarBgImgColor(i,'var(--swapbar)')
 
-    await delay(100)
+    await asyncdelay(ms*3)
     swap(array,min,i)
     swapheight(min,i)
 

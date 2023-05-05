@@ -2,7 +2,7 @@ const setBarBgImgColor = function (index,img='var(--bar)') {
   bars[index].style.backgroundImage = img
 }
 
-const delay = async function (ms) {
+const asyncdelay = async function (ms) {
   await new Promise((resolve) =>
         setTimeout(() => {
           resolve();
@@ -23,11 +23,9 @@ const swapheight = function (lefti,rightj) {
 }
 
 const generateNewArray = function () {
-  // console.log(generateArray.value)
   const container = document.querySelector('.container')
   container.remove()
   list = createarray(generateArray.value)
-  // console.log(list)
   bars = document.querySelectorAll(".bar")
 }
 
@@ -60,6 +58,7 @@ var l = []
 const div1 = document.querySelector('#div1')
 const generateLabel = document.querySelector('#generatelabel')
 const generateArray = document.querySelector('#generate')
+const speed = document.querySelector('#speed')
 const callmergesort = document.querySelector('#mergesort')
 const callquicksort = document.querySelector('#quicksort')
 const callbubblesort = document.querySelector('#bubblesort')
@@ -68,6 +67,7 @@ const callselectionsort = document.querySelector('#selectionsort')
 var list = createarray(generateArray.value)
 var bars = document.querySelectorAll(".bar")
 var sidearray = []
+var ms = generateArray.max-speed.value
 
 generateArray.addEventListener('input',()=>{
   generateNewArray()
@@ -77,9 +77,14 @@ generateLabel.addEventListener('click',()=>{
   generateNewArray()
 })
 
+speed.addEventListener('input',()=>{
+  ms = generateArray.max-speed.value
+  // console.log(ms)
+})
+
 callmergesort.addEventListener('click',()=>{
   sidearray = []
-  mergesort(list)
+  mergesort(list,0,list.length-1)
 })
 
 callquicksort.addEventListener('click',()=>{
