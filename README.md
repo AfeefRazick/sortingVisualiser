@@ -17,7 +17,7 @@ The technologies used are listed below
 
 ## How to Use
 
-To use this website, you can visite this url [non-existent] or clone the repository via Github.
+To use this website, you can visite this url https://github.com/AfeefRazick/sortingVisualiser or clone the repository via Github.
 
 ## Credits
 
