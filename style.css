@@ -196,7 +196,8 @@ a {
   color: white;
 }
 
-.unfinished:hover {
+.sliderlabel.button.unfinished:hover {
   background-color: rgb(255, 73, 73);
+  color: white;
 }
 
