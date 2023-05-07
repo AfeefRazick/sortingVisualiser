@@ -86,7 +86,7 @@ const selectiondesc = document.querySelector('#selectiondesc')
 var list = createarray(generateArray.value)
 var bars = document.querySelectorAll(".bar")
 // var ms = (generateArray.max*2)-speed.value
-var ms = 2**(speed.value/20)
+var ms = 2**((200-speed.value)/20)
 var finished = true
 
 generateArray.addEventListener('input',()=>{
