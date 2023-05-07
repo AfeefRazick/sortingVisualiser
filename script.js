@@ -1,3 +1,8 @@
+// const playsound = function (ms) {
+//   let audio = new Audio('assets/bleep.mp3')
+//   audio.play()
+// }
+
 const highlightbutton = function () {
   buttons.forEach((button)=>{
     button.classList.add('unfinished')
@@ -80,7 +85,8 @@ const selectiondesc = document.querySelector('#selectiondesc')
 
 var list = createarray(generateArray.value)
 var bars = document.querySelectorAll(".bar")
-var ms = (generateArray.max*2)-speed.value
+// var ms = (generateArray.max*2)-speed.value
+var ms = 2**(speed.value/20)
 var finished = true
 
 generateArray.addEventListener('input',()=>{
@@ -96,7 +102,7 @@ generateLabel.addEventListener('click',()=>{
 })
 
 speed.addEventListener('input',()=>{
-  ms = (generateArray.max*2)-speed.value
+  ms=2**((200-speed.value)/20)
 })
 
 callmergesort.addEventListener('click',async ()=>{

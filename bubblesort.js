@@ -8,7 +8,7 @@ const bubblesort = async function (array) {
       if (array[j+1]<array[j]) {
         setBarBgImgColor(j,'var(--swapbar)')
         setBarBgImgColor(j+1,'var(--swapbar)')
-
+        
         await asyncdelay(ms)
 
         swap(array,j,j+1)
