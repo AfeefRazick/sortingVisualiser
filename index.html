@@ -1,93 +1,159 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Sorting Visualiser</title>
-  <link rel="stylesheet" href="style.css">
-  <script src="script.js" defer></script>
-  <script src="mergesort.js" defer></script>
-  <script src="quicksort.js" defer></script>
-  <script src="bubblesort.js" defer></script>
-  <script src="selectionsort.js" defer></script>
-</head>
-<body>
-  <nav>
-    <div class="inner-nav">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sorting Visualiser</title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="script.js" defer></script>
+    <script src="mergesort.js" defer></script>
+    <script src="quicksort.js" defer></script>
+    <script src="bubblesort.js" defer></script>
+    <script src="selectionsort.js" defer></script>
+  </head>
+  <body>
+    <nav>
+      <div class="inner-nav">
+        <button id="mute">
+          <svg
+            id="mutesvg"
+            xmlns="http://www.w3.org/2000/svg"
+            width="30"
+            height="26"
+            fill="black"
+            class="bi bi-volume-mute-fill"
+            viewBox="0 0 16 16"
+          >
+            <path
+              d="M6.717 3.55A.5.5 0 0 1 7 4v8a.5.5 0 0 1-.812.39L3.825 10.5H1.5A.5.5 0 0 1 1 10V6a.5.5 0 0 1 .5-.5h2.325l2.363-1.89a.5.5 0 0 1 .529-.06zm7.137 2.096a.5.5 0 0 1 0 .708L12.207 8l1.647 1.646a.5.5 0 0 1-.708.708L11.5 8.707l-1.646 1.647a.5.5 0 0 1-.708-.708L10.793 8 9.146 6.354a.5.5 0 1 1 .708-.708L11.5 7.293l1.646-1.647a.5.5 0 0 1 .708 0z"
+            />
+          </svg>
+        </button>
         <div class="slidecontainer">
-          <label for="generate" class="sliderlabel button" id="generatelabel">Generate Array</label>
-          <input type="range" min="10" max="100" value="55" step="1" class="slider" id="generate">
+          <label for="generate" class="sliderlabel button" id="generatelabel"
+            >Generate Array</label
+          >
+          <input
+            type="range"
+            min="10"
+            max="100"
+            value="55"
+            step="1"
+            class="slider"
+            id="generate"
+          />
         </div>
         <div class="slidecontainer">
           <label for="speed" class="sliderlabel" id="speedlabel">Speed</label>
-          <input type="range" min="1" max="199" value="100" step="1" class="slider" id="speed">
+          <input
+            type="range"
+            min="1"
+            max="199"
+            value="100"
+            step="1"
+            class="slider"
+            id="speed"
+          />
         </div>
-    </div>
-    <div class="inner-nav">
+      </div>
+      <div class="inner-nav">
         <button class="button" id="mergesort">Mergesort</button>
         <button class="button" id="quicksort">Quicksort</button>
         <button class="button" id="bubblesort">Bubblesort</button>
         <button class="button" id="selectionsort">Selectionsort</button>
-
+      </div>
+    </nav>
+    <div class="background" id="div1">
+      <div class="desc-container">
+        <div class="description" id="mergedesc">
+          <h1 class="heading1">Merge Sort</h1>
+          <h2 class="heading2">Time Complexity</h2>
+          <p>Average - θ(n log(n))</p>
+          <p>Worst - O(n log(n))</p>
+          <h2 class="heading2">Explanation</h2>
+          <p>
+            Recursively divides an array into smaller subarrays, sorting each
+            subarray, then merging the sorted subarrays together.
+          </p>
+          <p>
+            Here is an in-depth<a
+              href="https://www.geeksforgeeks.org/merge-sort/"
+              >explanation</a
+            >
+          </p>
+          <ul>
+            <li class="compare">
+              <span class="text">Comparing & Swapping</span>
+            </li>
+          </ul>
+        </div>
+        <div class="description" id="quickdesc">
+          <h1 class="heading1">Quick Sort</h1>
+          <h2 class="heading2">Time Complexity</h2>
+          <p>Average - θ(n log(n))</p>
+          <p>Worst - O(n^2)</p>
+          <h2 class="heading2">Explanation</h2>
+          <p>
+            Recursively partitions the array, moving elements smaller than the
+            pivot, to the left of the pivot and elements larger to the right.
+          </p>
+          <p>
+            Here is an in-depth<a
+              href="https://www.geeksforgeeks.org/quick-sort/"
+              >explanation</a
+            >
+          </p>
+          <ul>
+            <li class="compare"><span class="text">Comparing</span></li>
+            <li class="swap"><span class="text">Swapping</span></li>
+            <li class="pivot"><span class="text">Pivot</span></li>
+          </ul>
+        </div>
+        <div class="description" id="bubbledesc">
+          <h1 class="heading1">Bubble Sort</h1>
+          <h2 class="heading2">Time Complexity</h2>
+          <p>Average - θ(n^2)</p>
+          <p>Worst - O(n^2)</p>
+          <h2 class="heading2">Explanation</h2>
+          <p>
+            Loops through array for each element, comparing adjacent elements,
+            moving the larger element to the right.
+          </p>
+          <p>
+            Here is an in-depth<a
+              href="https://www.geeksforgeeks.org/bubble-sort/"
+              >explanation</a
+            >
+          </p>
+          <ul>
+            <li class="compare"><span class="text">Comparing</span></li>
+            <li class="swap"><span class="text">Swapping</span></li>
+          </ul>
+        </div>
+        <div class="description" id="selectiondesc">
+          <h1 class="heading1">Selection Sort</h1>
+          <h2 class="heading2">Time Complexity</h2>
+          <p>Average - θ(n^2)</p>
+          <p>Worst - O(n^2)</p>
+          <h2 class="heading2">Explanation</h2>
+          <p>
+            Loops through array for each element, keeping track of the last
+            minimum value seen, and moving it to the start of the loop.
+          </p>
+          <p>
+            Here is an in-depth<a
+              href="https://www.geeksforgeeks.org/selection-sort/"
+              >explanation</a
+            >
+          </p>
+          <ul>
+            <li class="compare"><span class="text">Comparing</span></li>
+            <li class="swap"><span class="text">Swapping</span></li>
+            <li class="pivot"><span class="text">Last Minimum Value</span></li>
+          </ul>
+        </div>
+      </div>
     </div>
-  </nav>
-  <div class="background" id="div1">
-    <div class="desc-container">
-    <div class="description" id="mergedesc">
-      <h1 class="heading1">Merge Sort</h1>
-      <h2 class="heading2">Time Complexity</h2>
-      <p>Average - θ(n log(n))</p>
-      <p>Worst - O(n log(n))</p>
-      <h2 class="heading2">Explanation</h2>
-      <p>Recursively divides an array into smaller subarrays, sorting each subarray, then merging the sorted subarrays together.</p>
-      <p>Here is an in-depth<a href="https://www.geeksforgeeks.org/merge-sort/">explanation</a></p>
-      <ul>
-        <li class="compare"><span class="text">Comparing & Swapping</span></li>
-      </ul>
-    </div>
-    <div class="description" id="quickdesc">
-      <h1 class="heading1">Quick Sort</h1>
-      <h2 class="heading2">Time Complexity</h2>
-      <p>Average - θ(n log(n))</p>
-      <p>Worst - O(n^2)</p>
-      <h2 class="heading2">Explanation</h2>
-      <p>Recursively partitions the array, moving elements smaller than the pivot, to the left of the pivot and elements larger to the right.</p>
-      <p>Here is an in-depth<a href="https://www.geeksforgeeks.org/quick-sort/">explanation</a></p>
-      <ul>
-        <li class="compare"><span class="text">Comparing</span></li>
-        <li class="swap"><span class="text">Swapping</span></li>
-        <li class="pivot"><span class="text">Pivot</span></li>
-      </ul>
-    </div>
-    <div class="description" id="bubbledesc">
-      <h1 class="heading1">Bubble Sort</h1>
-      <h2 class="heading2">Time Complexity</h2>
-      <p>Average - θ(n^2)</p>
-      <p>Worst - O(n^2)</p>
-      <h2 class="heading2">Explanation</h2>
-      <p>Loops through array for each element, comparing adjacent elements, moving the larger element to the right.</p>
-      <p>Here is an in-depth<a href="https://www.geeksforgeeks.org/bubble-sort/">explanation</a></p>
-      <ul>
-        <li class="compare"><span class="text">Comparing</span></li>
-        <li class="swap"><span class="text">Swapping</span></li>
-      </ul>
-    </div>
-    <div class="description" id="selectiondesc">
-      <h1 class="heading1">Selection Sort</h1>
-      <h2 class="heading2">Time Complexity</h2>
-      <p>Average - θ(n^2)</p>
-      <p>Worst - O(n^2)</p>
-      <h2 class="heading2">Explanation</h2>
-      <p>Loops through array for each element, keeping track of the last minimum value seen, and moving it to the start of the loop.</p>
-      <p>Here is an in-depth<a href="https://www.geeksforgeeks.org/selection-sort/">explanation</a></p>
-      <ul>
-        <li class="compare"><span class="text">Comparing</span></li>
-        <li class="swap"><span class="text">Swapping</span></li>
-        <li class="pivot"><span class="text">Last Minimum Value</span></li>
-      </ul>
-    </div>
-  </div>
-  </div>
-</body>
+  </body>
 </html>
